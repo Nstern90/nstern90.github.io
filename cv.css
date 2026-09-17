@@ -1,64 +1,94 @@
 @import url(https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.207/distr/fira_code.css);
 
-body {
-  overflow: hidden;
-  max-width: 600px;
-  margin: 0 auto;
-  height: 100vh;
-
-  font-family: 'Fira Code', monospace;
-  font-size: 15px;
+html {
   color: var(--text-color);
   background-color: var(--background);
+  font-family: 'Fira Code', monospace;
+  font-size: 16px;
+}
 
+body {
   display: grid;
   grid-template-rows: auto 1fr;
   grid-template-areas: 
-    "header"
-    "tabs";
-}
+    'header'
+    'tabs';
+  height: 100vh;
+  margin: 0 auto;
+  max-width: 666px;
+  overflow: hidden;
 
-body > header {
-  position: relative;
-  grid-area: header;
-  text-align: center;
-}
-
-body > footer {
-  display: none;
+  > header {
+    position: relative;
+    grid-area: header;
+    text-align: center;
+  }
+  
+  > footer {
+    display: none;
+  }
 }
 
 p {
   line-height: 1.5em;
 }
 
-a {
+a:not(#conductor) {
   color: var(--secondary-color);
   text-decoration: none;
+
+  &:visited {
+    color: var(--clicked-color);
+  }
 }
 
-a:visited {
-  color: var(--clicked-color);
+a, input, button, select {
+  &:hover, &:focus {
+    &:not(#conductor) {
+      font-weight: bold;
+    }
+  }
 }
 
-a:hover, input:hover, button:hover, select:hover,
-a:focus, input:focus, button:focus, select:focus {
-  font-weight: bold;
+h1 {
+  font-size: var(--text-x-large);
+  margin: var(--spacing-small);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
-section .section-title {
-  margin: var(--sides-only-small);
-  line-height: 28px;
-  font-size: 16px;
+section [section-title] {
+  margin: var(--sides-only-medium);
+  line-height: 1.75rem;
+  font-size: var(--text-medium);
 }
 
-.my-name {
-  font-size: 40px;
-  margin: var(--spacing-small);
+[printed] {
+  display: none;
+}
+
+[clickable] {
+  cursor: pointer;
+}
+
+[project-name] {
+  font-weight: bold;
+}
+
+[loc-count] {
+  font-size: var(--text-x-small);
+}
+
+[stack] {
+  font-size: var(--text-x-small);
+}
+
+#contact-information {
+  p {
+    margin-top: 0;
+  }
 }
 
 #dark-mode-toggle {
@@ -87,17 +117,28 @@ section .section-title {
 }
 
 @media screen and (min-width: 600px), print {
-  .double-column-when-wide-enough {
+  [responsive-columns] {
     display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: min-content min-content;
+    grid-template-columns: 49% 49%;
+
+    &:not(:first-of-type) {
+      gap: var(--spacing-medium);
+      padding: var(--spacing-medium);
+
+      &[last-line] {
+        padding-bottom: 0;
+      }
+
+      [card] {
+        margin: 0 !important;
+      }
+    }
   }
 }
 
 @media print {
   body {
     overflow: initial;
-    font-size: 12pt;
     height: 100%;
     max-width: 100%;
     background: white;
@@ -110,9 +151,11 @@ section .section-title {
   }
 
   body > footer {
+    background-color: transparent;
     display: block;
+    font-size: var(--text-x-small);
     text-align: center;
-    margin: -1px;
+    margin-top: -36px;
   }
 
   p {
@@ -120,15 +163,23 @@ section .section-title {
     line-height: inherit;
   }
 
-  a {
+  a:not(#conductor) {
     color: var(--text-color);
   }
 
-  .my-name {
-    margin: 0 !important;
+  [not-printed] {
+    display: none;
   }
 
-  .not-printed {
-    display: none;
+  [printed] {
+    display: inline;
+  }
+
+  #contact-information {
+    font-size: var(--text-medium);
+  }
+
+  #project-pet {
+    margin-bottom: 0;
   }
 }

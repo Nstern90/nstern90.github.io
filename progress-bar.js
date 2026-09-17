@@ -1,6 +1,28 @@
+const JOB_TITLES = [
+  'programmer',
+  'refactoring enthusiast',
+  'code smell detector',
+  'spaghetti miner',
+  'glorified code monkey',
+  'one-man code cleanup crew',
+  'CPU with legs',
+  '<div> aligner',
+  'negative margin hunter',
+  'Angular enjoyer',
+  'Angular aficionado',
+  'Rust rookie',
+  'RxJS proponent',
+  'reinvented wheel spotter',
+  'convoluted logic simplifier',
+  'aspiring software architect',
+  'digital plumber',
+  'digital entomologist',
+  'aspiring rocket surgeon',
+];
+
 class AnimatedText {
   /**
-   * 
+   * Creates an instance of animated text in an element
    * @param {string} elementId to animate
    * @param {Object} options {value, prefix, suffix, duration]
    */
@@ -25,7 +47,7 @@ class AnimatedText {
    */
   setValue(newValue) {
     if (newValue !== this.value) {
-      this.animate(newValue);
+      this.#animate(newValue);
       this.value = newValue;
     }
   }
@@ -35,7 +57,7 @@ class AnimatedText {
    * animates text in the element
    * @param {number} newValue to animate towards
    */
-  animate(newValue) {
+  #animate(newValue) {
     const range = newValue - this.value;
     const startTime = performance.now();
     const endTime = startTime + this.duration;
@@ -59,35 +81,37 @@ class AnimatedText {
 }
 
 class ProgressBar {
-  constructor() {
-    /** @readonly @private {Date} */
-    this.birthday = new Date('07 Oct 1990 07:00');
-    /** @private {HTMLDivElement} */
-    this.bar = document.getElementById('progress-bar');
-    /** @private {HTMLDivElement} */
-    this.fill = document.getElementById('fill');
-    /** @private {AnimatedText} */
-    this.hint = new AnimatedText('percent-hint', {
-      value: 0,
-      suffix: '% towards next level',
-      duration: 600
-    });
+  /** @readonly @private {Date} */
+  #birthday = new Date('12 Jan 1991 13:05');
+  /** @private {HTMLDivElement} */
+  #bar = document.getElementById('progress-bar');
+  /** @private {HTMLDivElement} */
+  #fill = document.getElementById('fill');
+  /** @private {AnimatedText} */
+  #hint = new AnimatedText('percent-hint', {
+    value: 0,
+    suffix: '% towards next level',
+    duration: 600
+  });
+  /** @private {string} */
+  #job = JOB_TITLES[Math.floor(Math.random() * JOB_TITLES.length)];
 
-    this.fill.style.width = '0%';
-    this.setLevel();
+  constructor() {
+    this.#fill.style.width = '0%';
+    this.#setLevel();
 
     setInterval(() => this.setLevelAndExperience(), 1000);
   }
 
   /**
-   * sets age/level and adjusts the experience bar
+   * Sets age/level and adjusts the experience bar
    */
   setLevelAndExperience() {
     const today = new Date().getTime();
-    const age = this.calculateAge(today);
+    const age = this.#calculateAge(today);
 
-    this.setLevel(age);
-    this.setProgressBarFill(this.calculateProgressTowardsNextLevel(age, today));
+    this.#setLevel(age);
+    this.#setProgressBarFill(this.#calculateProgressTowardsNextLevel(age, today));
   }
 
   /**
@@ -96,8 +120,8 @@ class ProgressBar {
    * @param {number} pointInTime at which the age is calculated; defaults to new Date().getTime()
    * @returns {number} of years
    */
-  calculateAge(pointInTime = new Date().getTime()) {
-    return new Date(pointInTime - this.birthday.getTime()).getUTCFullYear() - 1970;
+  #calculateAge(pointInTime = new Date().getTime()) {
+    return new Date(pointInTime - this.#birthday.getTime()).getUTCFullYear() - 1970;
   }
 
   /**
@@ -105,8 +129,8 @@ class ProgressBar {
    * Sets age in the progress bar
    * @param {number} age to set; defaults to calculateAge()
    */
-  setLevel(age = this.calculateAge()) {
-    this.bar.title = `Level ${age} Engineer`;
+  #setLevel(age = this.#calculateAge()) {
+    this.#bar.title = `Level ${age} ${this.#job}`;
   }
 
   /**
@@ -114,10 +138,10 @@ class ProgressBar {
    * Sets progress bar's fill width
    * @param {number} percent of the progress bar
    */
-  setProgressBarFill(percent) {
-    this.fill.style.width = percent + '%';
-    this.hint.setValue(percent);
-    this.bar.setAttribute('aria-valuenow', percent);
+  #setProgressBarFill(percent) {
+    this.#fill.style.width = percent + '%';
+    this.#hint.setValue(percent);
+    this.#bar.setAttribute('aria-valuenow', percent);
   }
 
   /**
@@ -125,12 +149,13 @@ class ProgressBar {
    * Calculates % towards next birthday, based on current age
    * @param {number} age to calculate next birthday
    * @param {number} pointInTime at which the progress is based
-   * @returns percent of completion of the current level, capped between 0 and 100 inclusive
+   * @returns {number} percent of completion of the current level, capped between 0 and 100 inclusive
    */
-  calculateProgressTowardsNextLevel(age, pointInTime) {
-    const year = new Date().getUTCFullYear();
-    const daysInYear = this.isLeapYear(year) || this.isLeapYear(year - 1) ? 366 : 365;
-    const percent = (100 - ((this.getNextBirthday(age) - pointInTime) / 864000) / daysInYear).toFixed(2);
+  #calculateProgressTowardsNextLevel(age, pointInTime) {
+    const nextBirthday = this.#getNextBirthday(age);
+    const lastBirthday = this.#getNextBirthday(age, 0);
+    const daysInYear = this.#daysBetween(lastBirthday, nextBirthday);
+    const percent = 100 - (((nextBirthday - pointInTime) / 864000) / daysInYear).toFixed(2);
     return Math.min(Math.max(percent, 0), 100);
   }
 
@@ -138,23 +163,38 @@ class ProgressBar {
    * @private
    * Calculates next birthday's Unix time
    * @param {number} age 
+   * @param {number} yearsForward how many years forward to set
    * @returns {number} Unix time of the next birthday
    */
-  getNextBirthday(age) {
+  #getNextBirthday(age, yearsForward = 1) {
     return new Date(
-      this.birthday.getUTCFullYear() + age + 1,
-      this.birthday.getUTCMonth(), this.birthday.getUTCDate(),
-      this.birthday.getUTCHours(), this.birthday.getUTCMinutes()
+      this.#birthday.getUTCFullYear() + age + yearsForward,
+      this.#birthday.getUTCMonth(), this.#birthday.getUTCDate(),
+      this.#birthday.getUTCHours(), this.#birthday.getUTCMinutes()
     ).getTime();
   }
 
   /**
    * @private
-   * Chcecks if it's a leap year
-   * @param {number} year
-   * @returns {boolean} whether the current age's day count should count as a leap year
+   * Calculates days between two dates
+   * @param {Date} startDate 
+   * @param {Date} endDate 
+   * @returns {number} Days between two dates
    */
-  isLeapYear(year) {
-    return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+  #daysBetween(startDate, endDate) {
+    const millisecondsPerDay = 24 * 60 * 60 * 1000;
+    return (this.#convertToUTC(endDate) - this.#convertToUTC(startDate)) / millisecondsPerDay;
+  }
+
+  /**
+   * @private
+   * Converts date to UTC
+   * @param {Date} date 
+   * @returns {Date} Converted to UTC
+   */
+  #convertToUTC(date) {
+    const result = new Date(date);
+    result.setMinutes(result.getMinutes() - result.getTimezoneOffset());
+    return result;
   }
 }

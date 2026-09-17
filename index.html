@@ -4,20 +4,19 @@
 <head>
   <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
   <meta content="utf-8" http-equiv="encoding">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Adam Kuziemski">
 
   <link rel="stylesheet" href="variables.css" />
   <link rel="stylesheet" href="cv.css" />
-  <link rel="stylesheet" href="animations.css" />
   <link rel="stylesheet" href="progress-bar.css" />
   <link rel="stylesheet" href="tabs.css" />
   <link rel="stylesheet" href="card.css" />
+  <link rel="stylesheet" href="project-details.css" />
+  <link rel="stylesheet" href="animations.css" />
+  <link rel="stylesheet" href="chicken-period.css" />
 
-  <script type="text/javascript" src="./tabs.js"></script>
-  <script type="text/javascript" src="./progress-bar.js"></script>
   <script type="text/javascript" src="./dark-mode.js"></script>
-  <script type="text/javascript" src="./easter-eggs.js"></script>
-  <script type="text/javascript" src="./cv.js"></script>
 
   <title>Nathan Stern</title>
 </head>
@@ -26,9 +25,9 @@
   <header class="card">
     <h1 class="my-name">Nathan Stern</h1>
 
-    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    <svg not-printed clickable version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
       viewBox="0 0 122.88 112.88" style="enable-background:new 0 0 122.88 112.88" xml:space="preserve"
-      id="dark-mode-toggle" class="not-printed" role="img" aria-labelledby="dark-mode-title dark-mode-desc">
+      id="dark-mode-toggle" role="img" aria-labelledby="dark-mode-title dark-mode-desc">
       <title id="dark-mode-title">Toggle dark mode</title>
       <desc id="dark-mode-desc">Click to toggle dark mode</desc>
       <style type="text/css">
@@ -43,28 +42,22 @@
       </g>
     </svg>
 
-    <div id="progress-bar" title="Level 0 programmer" role="progressbar" aria-valuemin="0" aria-valuemax="100"
-      aria-valuenow="0">
+    <div id="progress-bar" title="Level 0 programmer" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
       <div id="fill"></div>
-      <div id="percent-hint" class="not-printed">0% until next level</div>
+      <div id="percent-hint" not-printed>0% until next level</div>
     </div>
     <nav id="tab-bar" role="tablist">
-      <button class="tab" role="tab" id="about-tab" aria-controls="about-content" aria-selected="false">About</button>
-      <button class="tab" role="tab" id="skills-tab" aria-controls="skills-content" aria-selected="false">Skills</button>
-      <button class="tab" role="tab" id="other-tab" aria-controls="other-content" aria-selected="false">Other</button>
-      <!--
-      <button class="tab" role="tab" id="other-tab" aria-controls="other-content" aria-selected="false">Blog</button>
-      -->
+      <button role="tab" id="about-tab" aria-controls="about-content" aria-selected="false">About</button>
+      <button role="tab" id="skills-tab" aria-controls="skills-content" aria-selected="false">Skills</button>
+      <button role="tab" id="personal-tab" aria-controls="personal-content" aria-selected="false">Personal</button>
     </nav>
   </header>
 
   <main id="tab-container">
-    <section class="tab-body" id="about-content" role="tabpanel" aria-labelledby="about-tab">
-      <div class="tab-title">About me</div>
-
-      <article class="card">
+    <section id="about-content" role="tabpanel" aria-labelledby="about-tab">
+      <article card id="contact-information">
         <header>
-          <h2 class="card-title">Contact info</h2>
+          <h2 card-title>Contact information</h2>
         </header>
         <div class="card-content double-column-when-wide-enough">
           <p>Mobile: <a href="tel:+447907-521-084">(+44)7907 521 084</a></p>
@@ -84,9 +77,9 @@
         </div>
       </article>
 
-      <article class="card not-printed">
+      <article card not-printed>
         <header>
-          <h2 class="card-title">Links</h2>
+          <h2 card-title>Links</h2>
         </header>
         <div class="card-content">
           <p><a href="https://github.com/Nstern90">GitHub</a></p>
@@ -96,7 +89,7 @@
 
       <section id="experience">
         <header>
-          <h2 class="section-title">Experience</h2>
+          <h2 section-title>Experience <span printed>(last two clients; you can find more on my website)</span></h2>
         </header>
 
          <article class="card">
@@ -142,7 +135,7 @@
 
       <section id="education">
         <header>
-          <h2 class="section-title">Education</h2>
+          <h2 section-title>Education</h2>
         </header>
         <article class="card">
           <header>
@@ -156,18 +149,11 @@
       </section>
     </section>
 
-    <section class="tab-body" id="skills-content" role="tabpanel" aria-labelledby="skills-tab">
- <!--
-      <div class="tab-title" id="skillz">Skill Tree</div>
-        <button class="tab" role="tab" id="Software-tab" aria-controls="software-content" aria-selected="false">Software</button>
-        <button class="tab" role="tab" id="Hardware-tab" aria-controls="hardware-content" aria-selected="false">Hardware</button>
-        <button class="tab" role="tab" id="OS-tab" aria-controls="OS-content" aria-selected="false">Augments</button>
-      </div>
--->
-      <div class="tab-title" id="skillz">Skills</div>
-      <div class="double-column-when-wide-enough">
+    <section id="skills-content" role="tabpanel" aria-labelledby="skills-tab">
+      <div tab-title id="skillz">Skills</div>
 
-        <article class="card">
+      <div responsive-columns>
+        <article card>
           <header>
             <h2 class="card-title">Operating Systems</h2>
           </header>
@@ -181,8 +167,8 @@
             </ul>
           </div>
         </article>
-        
-        <article class="card">
+
+        <article card>
           <header>
             <h2 class="card-title">Professional Courses</h2>
           </header>
@@ -197,7 +183,7 @@
           </div>
         </article>
 
-        <article class="card">
+        <article card>
           <header>
             <h2 class="card-title">Software</h2>
           </header>
@@ -216,7 +202,7 @@
           </div>
         </article>
 
-        <article class="card">
+        <article card>
           <header>
             <h2 class="card-title">Currently Studying</h2>
           </header>
@@ -290,7 +276,7 @@
       <div class="double-column-when-wide-enough">
         <article class="card not-printed">
           <header>
-            <h2 class="card-title">Interests/hobbies</h2>
+            <h2 card-title>Interests/hobbies</h2>
           </header>
           <div class="card-content">
             <ul>
@@ -316,7 +302,7 @@
 
         <article class="card not-printed">
           <header>
-            <h2 class="card-title">Random facts</h2>
+            <h2 card-title>Random facts</h2>
           </header>
           <div class="card-content">
             <p>I collect various pop culture paraphernalia, including a Dr. Doom pop model signed by Stan Lee, Build Gunpla</p>
@@ -330,8 +316,14 @@
 
       </div>
     </section>
+  <footer>For a live version, visit <a href="https://nstern90.github.io">https://nstern90.github.io</a></footer>
 
-  <footer>For a live version, visit https://nstern90.github.io</footer>
+  <script type="text/javascript" src="./progress-bar.js" async></script>
+  <script type="text/javascript" src="./tabs.js" async></script>
+  <script type="text/javascript" src="./easter-eggs.js" async></script>
+  <script type="text/javascript" src="./project-details.js" async></script>
+  <script type="text/javascript" src="./cv.js" async></script>
+  <script type="text/javascript" src="./logic.js" async></script>
+
 </body>
-
 </html>

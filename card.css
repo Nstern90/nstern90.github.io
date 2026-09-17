@@ -1,44 +1,41 @@
-.card {
-  margin: var(--spacing-small);
-  padding-top: var(--spacing-small);
+[card] {
+  background-color: var(--element-background);
+  border-radius: .2rem;
   border: 1px solid var(--line-color);
   box-shadow: var(--mat-shadow);
-  border-radius: 0.2em;
-  background-color: var(--element-background);
-}
+  margin: var(--spacing-medium);
+  padding-top: var(--spacing-small);
 
-.card .card-title {
-  font-size: 1.1em;
-  font-weight: bold;
-}
+  [card-title] {
+    font-size: var(--text-medium);
+    font-weight: bold;
+  }
 
-.card .project-name {
-  font-size: 0.95em;
-  font-weight: bold;
-}
+  [card-subtitle] {
+    font-size: var(--text-x-small);
+  }
 
-.card .card-subtitle {
-  font-size: 0.8em;
-}
+  card-content {
+    display: block;
+    padding: var(--spacing-small) var(--spacing-small) 0 var(--spacing-small);
+    font-size: var(--text-small);
 
-.card > header {
-  padding: var(--sides-only-small);
-  border-bottom: 1px solid var(--line-color);
-}
+    > p:first-child {
+      margin-top: 0;
+    }
+  }
 
-.card > header :last-child {
-  margin-bottom: var(--spacing-small);
-}
+  > header {
+    padding: var(--sides-only-small);
+    border-bottom: 1px solid var(--line-color);
 
-.card > footer {
-  padding: var(--sides-only-small);
-  border-top: 1px solid var(--line-color);
-}
+    :last-child {
+      margin-bottom: var(--spacing-small);
+    }
+  }
 
-.card .card-content {
-  padding: var(--sides-only-small);
-}
-
-.card-content > h4:first-child {
-  margin-top: var(--spacing-small);
+  > footer {
+    padding: var(--sides-only-small);
+    border-top: 1px solid var(--line-color);
+  }
 }
