@@ -82,7 +82,7 @@ class AnimatedText {
 
 class ProgressBar {
   /** @readonly @private {Date} */
-  #birthday = new Date('12 Jan 1991 13:05');
+  #birthday = new Date('07  Oct  1990 07:00');
   /** @private {HTMLDivElement} */
   #bar = document.getElementById('progress-bar');
   /** @private {HTMLDivElement} */
