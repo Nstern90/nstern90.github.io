@@ -22,7 +22,7 @@
 </head>
 
 <body>
-  <header class="card">
+  <header card>
     <h1 class="my-name">Nathan Stern</h1>
 
     <svg not-printed clickable version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -59,21 +59,23 @@
         <header>
           <h2 card-title>Contact information</h2>
         </header>
-        <div class="card-content double-column-when-wide-enough">
-          <p>Mobile: <a href="tel:+447907-521-084">(+44)7907 521 084</a></p>
-          <p>E-mail: <a href="mailto:natstern1990@gmail.com">natstern1990@gmail.com</a></p>
-        </div>
+        <card-content></card-content>
+          <div responsive-columns>
+            <p>Mobile: <a href="tel:+447907-521-084">(+44)7907 521 084</a></p>
+            <p>E-mail: <a href="mailto:natstern1990@gmail.com">natstern1990@gmail.com</a></p>
+          </div>
+        </card-content>  
       </article>
 
       <article card>
         <header>
-          <h2 class="card-title">Profile</h2>
+          <div card-subtitle>Profile</h2>
         </header>
-        <div class="card-content">
+        <card-content>
           <p>One day I turned on a computer for the first time and it was the beginning of a beautiful relationship</p>
           <p>I have spent most of my life pursuing computing and all that entails, from building them and troubleshooting, to alternate operating systems and environments</p>
           <p>Currently I have a small homelab setup with TrueNAS Scale, some containers, and whole lot of overkill monitoring and dashboards</p>
-          <p>With over 7 years of working in various roles in operations, I am looking to further expand on my skills and experience</p>
+          <p>With nearly 10 years of working in various roles in operations, I am looking to further expand on my skills and experience</p>
         </div>
       </article>
 
@@ -81,7 +83,7 @@
         <header>
           <h2 card-title>Links</h2>
         </header>
-        <div class="card-content">
+        <card-content>
           <p><a href="https://github.com/Nstern90">GitHub</a></p>
           <p><a href="https://uk.pcpartpicker.com/list/VD9dqR">My rig</a></p>
         </div>
@@ -93,42 +95,66 @@
         </header>
 
          <article card>
-          <header>
-            <h3 class="card-title">Bluewire Technologies</h3>
-            <div class="card-subtitle">11.2022 – Present</div>
-            <div class="card-subtitle">Role: Infrastructure and Deployment Engineer</div>
+          <header fancy>
+            <h3 card-title>Bluewire Technologies</h3>
+            <div card-subtitle dates>11.2022 – Present</div>
+            <div card-subtitle Role><strong>Role:</strong> Infrastructure and Deployment Engineer</div>
           </header>
-          <div class="card-content">
-            <h4 class="project-name">Epro</h4>
-            <div class="card-subtitle">Thousands of Daily Users</div>
-            <p>Tech: Windows 10/11, Windows Server, Linux, Bash,  IIS, Powershell, AD, Azure, AWS, Octopus, SQL, Grafana, Icinga, Jira</p>
-            <p>Responsibilities:<br>
-              Designing, Implementing, and Maintainining Infrastructure; Deployment Automation; System Monitoring and Maintenance; Security and Compliance; Disaster Recovery and Backup Solutions; Cloud Services Management; Collaborating with Development Teams; Troubleshooting and Support; Performance Optimization; Documentation and Reporting; Stakeholder Communication; Innovation and Improvement
-            </p>
-          </div>
+          <card-content>
+            <project-details>
+              <h4 project-name>Epro</h4>
+              <div stats>Thousands of Daily Users</div>
+              <details stack open>
+                <summary>Tech stack</summary>
+                <ul>
+                  <li>Windows 11</li>     
+                  <li>Windows Server</li>
+                  <li>Linux</li>
+                  <li>Bash</li>
+                  <li>IIS</li>
+                  <li>Powershell</li>
+                  <li>Active Directory</li>           
+                  <li>Azure</li>
+                  <li>AWS</li>
+                  <li>Octopus</li>
+                  <li>SQL</li>
+                  <li>Grafana</li>
+                  <li>Icinga</li>
+                  <li>Jira</li>
+                  <li>Bitdefender</li>
+                </ul>
+              </details>
+              <p>Responsibilities:>
+                <strong>Responsibilities</strong>
+                Designing, Implementing, and Maintainining Infrastructure; Deployment Automation; System Monitoring and Maintenance;
+                Security and Compliance; Disaster Recovery and Backup Solutions; Cloud Services Management; Collaborating with Development Teams;
+                Troubleshooting and Support; Performance Optimization; Documentation and Reporting; Stakeholder Communication; Innovation and Improvement
+              </p>
+            </project-details>
+          </card-content>
         </article>
         
         <article card>
           <header>
-            <h3 class="card-title">South Wales Police</h3>
-            <div class="card-subtitle">02.2022 – 11.2022</div>
-            <div class="card-subtitle">Role: ICT Contractor</div>
+            <h3 card-title>South Wales Police</h3>
+            <div card-subtitle>02.2022 – 11.2022</div>
+            <div card-subtitle>Role: ICT Contractor</div>
           </header>
         </article>
 
         <article card>
           <header>
-            <h3 class="card-title">Smartway2</h3>
-            <div class="card-subtitle">06.2021 – 12.2021</div>
-            <div class="card-subtitle">Role: Customer Delivery Consultant</div>
+            <h3 card-title>Smartway2</h3>
+            <div card-subtitle>06.2021 – 12.2021</div>
+            <div card-subtitle>Role: Customer Delivery Consultant</div>
           </header>
         </article>
 
         <article card>
           <header>
-            <h3 class="card-title">Eurofins Chemtest</h3>
-            <div class="card-subtitle">08.2019 – 06.2021</div>
-            <div class="card-subtitle">Role: IT Systems Administrator</div>
+            <h3 card-title>Eurofins Chemtest</h3>
+            <div card-subtitle>08.2019 – 06.2021</div>
+            <div card-subtitle>Role: IT Systems Administrator</div>
           </header>
         </article>
       </section>
@@ -139,10 +165,10 @@
         </header>
         <article card>
           <header>
-            <h3 class="card-title">Richard Hale School</h3>
-            <div class="card-subtitle">09.2001 – 11.2007</div>
+            <h3 card-title>Richard Hale School</h3>
+            <div card-subtitle>09.2001 – 11.2007</div>
           </header>
-          <div class="card-content">
+          <card-content>
             <p>Completed 8 GCSE's at grade C or above</p>
           </div>
         </article>
@@ -155,9 +181,9 @@
       <div responsive-columns>
         <article card>
           <header>
-            <h2 class="card-title">Operating Systems</h2>
+            <div card-subtitle>Operating Systems</h2>
           </header>
-          <div class="card-content">
+          <card-content>
             <ul>
               <li>Windows 7, 8, 10, 11</li>
               <li>Linux</li>
@@ -170,9 +196,9 @@
 
         <article card>
           <header>
-            <h2 class="card-title">Professional Courses</h2>
+            <div card-subtitle>Professional Courses</h2>
           </header>
-          <div class="card-content">
+          <card-content>
             <ul>
               <li>Azure AZ-104</li>
               <li>CompTIA A+</li>
@@ -185,9 +211,9 @@
 
         <article card>
           <header>
-            <h2 class="card-title">Software</h2>
+            <div card-subtitle>Software</h2>
           </header>
-          <div class="card-content">
+          <card-content>
             <ul>
               <li>PRTG</li>
               <li>Solarwinds</li>
@@ -204,9 +230,9 @@
 
         <article card>
           <header>
-            <h2 class="card-title">Currently Studying</h2>
+            <div card-subtitle>Currently Studying</h2>
           </header>
-          <div class="card-content">
+          <card-content>
             <ul>
               <li>Azure AZ-305</li>
               <li>CI/CD Tools</li>
@@ -218,9 +244,9 @@
 
       <article card>
         <header>
-          <h2 class="card-title">Other</h2>
+          <div card-subtitle>Other</h2>
         </header>
-        <div class="card-content">
+        <card-content>
           <ul>
             <li>Jira</li>
             <li>Confluence</li>
@@ -232,29 +258,15 @@
 
     </section>
 
-      <!--
-        <article card>
-          <header>
-            <h2 class="card-title">Professional Qualifications</h2>
-            <div class="card-subtitle">A brief list of the courses I've completed</div>
-          </header>
-          <div class="card-content">
-            <p>CompTIA A+</p>
-            <p>AZ 104</p>
-            <p>Node.js</p>
-          </div>
-        </article>
-        -->
-
     <section class="tab-body" role="tabpanel" aria-labelledby="other-tab">
       <div class="tab-title not-printed">Other</div>
 
       <article card not-printed>
         <header>
-          <h2 class="card-title">Personal project #1</h2>
-          <div class="card-subtitle">Homelab</div>
+          <div card-subtitle>Personal project #1</h2>
+          <div card-subtitle>Homelab</div>
         </header>
-        <div class="card-content">
+        <card-content>
           <p>Technology and Systems: ProxMox, TrueNAS Scale, Linux, PiHole, Vaultwarden, Pangolin, Uptime Kuma, NetBoot.xyz, Portainer, Dozzle, Dockge, Portainer, Netvisor, Terraform</p>
           <p>A Homelab that is utilised as a media server, steamcache for game downloads and home automation. A proxmox cluster for containers and virtualisation<br>
             It is also used for virtualisation for me to sandbox and play around with new things or to augment my studying<br>
@@ -264,11 +276,11 @@
 
       <article card not-printed>
         <header>
-          <h2 class="card-title">Personal project #2</h2>
-          <div class="card-subtitle"><a href="https://github.com/OpenStickCommunity/Hardware/blob/main/Boards/GP2040-CE%20Official%20Controllers/Open_Core0/README.md">OpenCore_0</a></div>
+          <div card-subtitle>Personal project #2</h2>
+          <div card-subtitle><a href="https://github.com/OpenStickCommunity/Hardware/blob/main/Boards/GP2040-CE%20Official%20Controllers/Open_Core0/README.md">OpenCore_0</a></div>
         </header>
-        <div class="card-content">
-          <p>This is an open source leverless controller similar to the Hbox and Frame1 but running the <a href="https://gp2040-ce.info/">GP2040-CE</a> firmware</p>
+        <card-content>
+          <p>This is an open source leverless controller similar to the Hitbox and Frame1 but running the <a href="https://gp2040-ce.info/">GP2040-CE</a> firmware</p>
           <p>It uses a custom RP2040 PCB, a 3D printed case with acrylic insert and <a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlm0qQySTot5P2lfin_dsVSQVfruEdHDYGDQ&s">Kailh Choc V2 Switches</a></p>
         </div>
       </article>
@@ -278,7 +290,7 @@
           <header>
             <h2 card-title>Interests/hobbies</h2>
           </header>
-          <div class="card-content">
+          <card-content>
             <ul>
               <li>Technology</li>
               <li>Music</li>
@@ -291,9 +303,9 @@
             </ul>
           </div>
           <header>
-            <h2 class="card-title">Animals</h2>
+            <div card-subtitle>Animals</h2>
           </header>
-          <div class="card-content">
+          <card-content>
             <p>I have a fondness for more esoteric pets</p>
             <p>Currently I have a <a href="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.Z5k_T82heedgC-_KQaP1bwHaE8%26pid%3DApi&f=1">Cornsnake</a> called "Noodle"</p>
             <p>As well as a <a href="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.B8X492fylShO-9l1be3G0wHaEK%26pid%3DApi&f=1">Leopard Gecko</a> named "Bowser"</p>
@@ -304,9 +316,9 @@
           <header>
             <h2 card-title>Random facts</h2>
           </header>
-          <div class="card-content">
-            <p>I collect various pop culture paraphernalia, including a Dr. Doom pop model signed by Stan Lee, Build Gunpla</p>
-            <p>I have almost all of the collectors editions of Final Fantasy XIV</p>
+          <card-content>
+            <p>I collect various pop culture paraphernalia, including a Dr. Doom pop model signed by Stan Lee</p>
+            <p>I build gunpla and other model kits</p>
             <p>I build custom keyboards and currently I daily drive a <a href="https://mechboards.co.uk/products/lily58-kit?variant=40366789820621">Lily58 Pro</a> with the XDA keycaps using <a href="https://ucarecdn.com/13f44cdd-2cb7-4a6f-b980-b86be862122d/-/format/auto/-/preview/3000x3000/-/quality/lighter/5.jpg">Wuque Studio WS Silent Linear switches</a> as my daily driver, with a custom made USB cable that uses an aviator connector</p>
             <p>I spent a year working and traveling around western Europe</p>
             <p>I have a full UK driving license</p>
